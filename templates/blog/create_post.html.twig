@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создать пост{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Создать пост</h1>
+
+    {{ form_start(postCreateForm) }}
+        {{ form_row(postCreateForm.title, {
+            label: 'Заголовок'
+        }) }}
+        {{ form_row(postCreateForm.text, {
+            label: 'Текст'
+        }) }}
+
+        <button type="submit" class="btn">Создать</button>
+    {{ form_end(postCreateForm) }}
+{% endblock %}
